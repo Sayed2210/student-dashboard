@@ -1,8 +1,15 @@
 <template>
   <div class="home">
-    <div class="text-center">elsayed</div>
-    <FIcon :icon="['fas', 'user']" />
+    <AppHeader />
   </div>
 </template>
 
-<script></script>
+<script>
+import AppHeader from "@/components/AppHeader.vue";
+
+export default {
+  components: {
+    AppHeader,
+  },
+};
+</script>
