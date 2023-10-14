@@ -25,9 +25,14 @@ const vuetify = createVuetify({
   directives,
 });
 
+//mitt
+import mitt from "mitt";
+
+const Emitter = mitt();
 createApp(App)
   .component("FIcon", FontAwesomeIcon)
   .use(store)
   .use(router)
   .use(vuetify)
+  .provide("Emitter", Emitter)
   .mount("#app");

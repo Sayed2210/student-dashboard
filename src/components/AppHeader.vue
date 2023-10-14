@@ -6,13 +6,13 @@
     <v-container>
       <v-row class="justify-space-between">
         <v-col cols="12" sm="4"
-          ><v-btn color="primary"
+          ><v-btn color="primary" @click="openStudentModel"
             ><FIcon :icon="['fas', 'user']" class="mr-2" />Add New
             Student</v-btn
           ></v-col
         >
         <v-col cols="12" sm="4" class="d-flex justify-end"
-          ><v-btn color="danger" class="text-white"
+          ><v-btn color="danger" class="text-white" v-if="studentData.length"
             ><FIcon :icon="['fas', 'user']" class="mr-2" />Del All
             Students</v-btn
           ></v-col
@@ -21,19 +21,30 @@
       <v-row
         ><v-alert
           closable
-          title="Alert title"
           text="..."
           color="success"
+          v-if="successMsg"
         ></v-alert
       ></v-row>
       <v-row
-        ><v-alert
-          closable
-          title="Alert title"
-          text="..."
-          type="warning"
-        ></v-alert
+        ><v-alert closable text="..." type="warning" v-if="errMsg"></v-alert
       ></v-row>
     </v-container>
   </div>
 </template>
+
+<script>
+export default {
+  inject: ["Emitter"],
+  methods: {
+    openStudentModel() {
+      this.Emitter.emit("openStudentModel");
+    },
+  },
+  data: () => ({
+    errMsg: "",
+    successMsg: "",
+    studentData: [],
+  }),
+};
+</script>
