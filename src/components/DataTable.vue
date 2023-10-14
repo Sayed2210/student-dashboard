@@ -23,7 +23,7 @@
             <td>eh600039@gmail.com</td>
             <td>01013453391</td>
             <td>
-              <v-btn color="danger"
+              <v-btn color="danger" @click="openDelCurrentStudent"
                 ><FIcon :icon="['fas', 'user-times']" /> Delete</v-btn
               >
               &nbsp;
@@ -47,6 +47,9 @@ export default {
   methods: {
     openUpdateStudentModel() {
       this.Emitter.emit("openUpdateStudentModel");
+    },
+    openDelCurrentStudent() {
+      this.Emitter.emit("openDelCurrentStudent");
     },
   },
 };

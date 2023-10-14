@@ -6,7 +6,11 @@
           ><v-card class="px-8 py-5" width="480">
             <div class="d-flex align-center justify-space-between">
               <h4>Add New Student</h4>
-              <FIcon :icon="['fas', 'close']" @click="dialog = false" />
+              <FIcon
+                :icon="['fas', 'close']"
+                @click="dialog = false"
+                style="cursor: pointer"
+              />
             </div>
             <v-divider></v-divider>
             <v-form @submit.prevent>

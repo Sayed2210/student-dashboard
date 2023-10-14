@@ -12,7 +12,11 @@
           ></v-col
         >
         <v-col cols="12" sm="4" class="d-flex justify-end"
-          ><v-btn color="danger" class="text-white" v-if="studentData.length"
+          ><v-btn
+            color="danger"
+            class="text-white"
+            @click="openDelAllStudents"
+            v-if="studentData.length"
             ><FIcon :icon="['fas', 'user']" class="mr-2" />Del All
             Students</v-btn
           ></v-col
@@ -39,6 +43,9 @@ export default {
   methods: {
     openStudentModel() {
       this.Emitter.emit("openStudentModel");
+    },
+    openDelAllStudents() {
+      this.Emitter.emit("openDelAllStudents");
     },
   },
   data: () => ({
