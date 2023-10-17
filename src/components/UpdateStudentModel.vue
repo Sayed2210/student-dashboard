@@ -37,7 +37,7 @@
                   v$.currentStudent.name.$error ? 'red' : 'yellow-darken-2'
                 "
                 class="mt-2"
-                v-model="currentStudent.name"
+                v-model="currentStudent.name.first"
               ></v-text-field>
               <span class="text-red" v-if="v$.currentStudent.name.$error">{{
                 v$.currentStudent.name.$errors[0].$message
@@ -82,11 +82,7 @@ export default {
   data: () => ({
     dialog: false,
     v$: useVuelidate(),
-    currentStudent: {
-      name: "",
-      email: "",
-      phone: "",
-    },
+    currentStudent: {},
   }),
   validations() {
     return {
@@ -100,6 +96,9 @@ export default {
   mounted() {
     this.Emitter.on("openUpdateStudentModel", () => {
       this.dialog = true;
+    });
+    this.Emitter.on("selectCurrentStd", (data) => {
+      this.currentStudent = data;
     });
   },
   methods: {

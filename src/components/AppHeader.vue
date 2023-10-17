@@ -16,7 +16,7 @@
             color="danger"
             class="text-white"
             @click="openDelAllStudents"
-            v-if="studentData.length"
+            v-if="users.length"
             ><FIcon :icon="['fas', 'user']" class="mr-2" />Del All
             Students</v-btn
           ></v-col
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   inject: ["Emitter"],
   methods: {
@@ -51,7 +52,12 @@ export default {
   data: () => ({
     errMsg: "",
     successMsg: "",
-    studentData: [],
   }),
+  computed: {
+    ...mapState(["users"]),
+  },
+  mounted() {
+    this.$store.dispatch("fetchUsers");
+  },
 };
 </script>

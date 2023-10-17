@@ -14,7 +14,10 @@
             </div>
             <v-divider></v-divider>
             <v-card-title>Current Student</v-card-title>
-            <v-card-text>Name: {{ currentStudent.name }}</v-card-text>
+            <v-card-text
+              >Name: {{ currentStudent.name.first }}
+              {{ currentStudent.name.last }}</v-card-text
+            >
             <v-card-text>Email: {{ currentStudent.email }}</v-card-text>
             <v-card-text>Phone: {{ currentStudent.phone }}</v-card-text>
             <v-divider></v-divider>
@@ -34,15 +37,14 @@ export default {
   inject: ["Emitter"],
   data: () => ({
     dialogDel: false,
-    currentStudent: {
-      name: "",
-      email: "",
-      phone: "",
-    },
+    currentStudent: {},
   }),
   mounted() {
     this.Emitter.on("openDelCurrentStudent", () => {
       this.dialogDel = true;
+    });
+    this.Emitter.on("selectCurrentStd", (data) => {
+      this.currentStudent = data;
     });
   },
 };
